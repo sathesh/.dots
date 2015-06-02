@@ -1,14 +1,17 @@
-# .bashrc
+# bashrc - Sathesh
 
-########### Sathesh Start 
 ## Path manupulation
-export USER_PATH=".:$MYDOTS/.dots/mybin" # Extra paths.
-export NNTPSERVER=dummynews.net		# Preferred news server.
+export USER_PATH=".:$MYDOTS/.dots/mybin" # Extra paths. I add my scripts over here
+#export NNTPSERVER=dummynews.net		# Preferred news server.
 export PATH=$USER_PATH:$PATH:
 export LD_LIBRARY_PATH=/usr/local/lib
 
-source $MYDOTS/.dots/shortcuts
-source $MYDOTS/.dots/gitcuts
+if [ -e $MYDOTS/.dots/shortcuts ]; then
+	source $MYDOTS/.dots/shortcuts
+fi
+if [ -e $MYDOTS/.dots/gitcuts ]; then
+	source $MYDOTS/.dots/gitcuts
+fi
 
 
 # User specific aliases and functions
@@ -17,7 +20,6 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias vi='vim'
-alias go='go.sh'
 alias tmux='tmux -f $MYDOTS/.dots/tmux.conf'
 
 
@@ -26,19 +28,19 @@ alias tmux='tmux -f $MYDOTS/.dots/tmux.conf'
 ## Bash 
 umask 022                        # no write by group or other
 export autologout=0              # disable autologout
+export ignoreeof=1               # disable ^D for logout (up to 4)
 export FIGNORE=".o"              # don't complete .o files
 export HISTFILE=~/.bash_history  # history file
 export HISTFILESIZE=500          # history file size
-export HISTSIZE=128              # save last 128 commands
-export ignoreeof=1              # disable ^D for logout (up to 4)
+export HISTSIZE=1024             # save last 1024 commands
 set -C                           # disable redirect overwrite
 set -b                           # enable immediate job notify
 
-export EDITOR=vi				# Preferred editor.
+export EDITOR=vim				# Preferred editor.
 export PRINTER=lp				# Preferred printer.
 
 
-## Bash history commands syncin with all terminals
+## Bash history commands syncing with all terminals
 shopt -s histappend
 export PROMPT_COMMAND="history -a && history -n"
 ##
@@ -62,8 +64,10 @@ export INPUTRC=`echo $MYDOTS`'/.dots/inputrc'  #or any other location you want
 #SHOST=${HOST: -10}
 #PS1="$SHOST:\W\$"
 #PS1="$BLUE[$RED\`echo \$CLONE\`$BLUE]$NO_COLOUR\u@\h:\W\$ "
-###### Sathesh end ##
+###### 
 
 
 ## F5 specific
-source $MYDOTS/.dots/f5cuts
+if [ -e $MYDOTS/.dots/f5cuts ]; then
+	source $MYDOTS/.dots/f5cuts
+fi
