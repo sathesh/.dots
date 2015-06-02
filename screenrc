@@ -1,0 +1,77 @@
+escape `` # Instead of Control-a, make the escape/command character be ` (backtick)
+#escape ^Tt # Instead of Control-a, make the escape/command character be Control-b
+
+
+# Tabbar: http://gentoo-wiki.com/TIP_Using_screen
+# change the hardstatus settings to give an window list at the bottom of the
+# screen, with the time and date and with the current window highlighted
+hardstatus alwayslastline                                                                                                                          
+
+hardstatus string '%{= kc}[ %{C}%H %{c}]%{G}%= %{= kw}%?%-Lw%?%{g}%{G}%n*%f%t%?%u%?%{g}%{w}%?%+Lw%?%?%= %{G}%{c}[%{C} %d/%m %{C}%c %{c}]'
+
+autodetach on       # Autodetach session on hangup instead of terminating screen completely
+startup_message off # Turn off the splash screen
+defscrollback 30000 # Use a 30000-line scrollback buffer
+
+
+#termcapinfo xterm ti@:te@
+#term xterm-color #for VIM mouse pointer to work
+#termcapinfo xterm-color|rxvt ti@:te@
+
+#http://www.frexx.de/xterm-256-notes/
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+# -- For VIM background color to appear properly
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm|xterm-color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm:ti@:te@'
+
+# erase background with current bg color
+defbce "on" 
+
+#caption always "%{= kc}%H (system load: %l)%-21=%{= .m}%D %d.%m.%Y %0c"
+
+shell -$SHELL
+
+altscreen on
+
+# http://www.nabble.com/Re%3A-PgUp-and-PgDn-not-working-to9668896.html#a9668896
+bindkey ^[[5;3~ eval "copy" "stuff \"^u\"" # alt-page-up goes to copy mode
+bindkey ^[[6;3~ eval "copy"  # alt-page-down goes to copy mode
+bindkey -m ^[[5;3~ stuff "^u" # alt-page-up sends page-up in copy mode
+bindkey -m ^[[6;3~ stuff "^d" # alt-page-down sends page-down in copy mode 
+
+#> One feature I'd LOVE to see is "find as you type" in copy mode when using ?
+#> or / to search!  VIM does this quite effectively.  Is it a crazy idea to do
+#> this in Screen?
+markkeys "^S=/:^R=?" 
+
+# Clear scrollback buffer using Alt+/
+#bindkey ^[^l eval "scrollback 0" "scrollback 30000"
+bindkey "^[/" eval "clear" "scrollback 0" "scrollback 30000"
+
+# Window numbering starts at 1, not 0.
+#bind c screen 1
+#bind 1 select 10
+
+ignorecase on
+#remove xoff
+bind ^S
+
+#bind ^f screen telnet 10.6.2.110
+#ALT-, and ALT-. to goto prev and next window
+bindkey "^[," prev
+bindkey "^[." next
+
+
+bindkey "^[`" select 0
+bindkey "^[0" select 0
+bindkey "^[1" select 1
+bindkey "^[2" select 2
+bindkey "^[3" select 3
+bindkey "^[4" select 4
+bindkey "^[5" select 5
+bindkey "^[6" select 6
+bindkey "^[7" select 7
+bindkey "^[8" select 8
+bindkey "^[9" select 9

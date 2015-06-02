@@ -1,0 +1,12 @@
+## User defined alias ##
+alias ll="ls -lrt"
+alias ls='ls --color=auto'
+alias l='ls -l'
+alias rm='rm -i'
+#alias vncstart="/usr/bin/vncserver -geometry 1600x900"
+#alias vncstop="/usr/bin/vncserver -kill $DISPLAY"
+#Show all programs connected or listening on a network port
+alias nsl='netstat -alnp --protocol=inet | grep -v CLOSE_WAIT | cut -c-6,21-94 | tail +2'
+
+
+
