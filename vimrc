@@ -34,6 +34,9 @@ let taglist_enabled=1
 " pip install pep8 - to install
 Plugin 'pep8'
 
+" Solarized color scheme - I am not fan of this yet 
+" Plugin 'altercation/vim-colors-solarized.git'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -56,6 +59,7 @@ set showmatch             "show matching brackets
 set nostartofline         " leave my cursor where it was
 syntax enable             
 syntax on             
+hi LineNr ctermfg=LightGrey
 
 "## tabs, space
 "set ts=2                  "tabstop
@@ -137,5 +141,15 @@ nnoremap <Leader>n <C-w>=
 let g:pep8_map='<Leader>8'
 let g:pep8_ignore="E265"
 
-"## Python indentation
+"## Python indentation & hl column 80
 au FileType python setl sw=4 sts=4 et
+"au FileType python hi ColorColumn ctermbg=LightGray
+"au FileType python set colorcolumn=80
+
+"## Run python script and output on new cwin
+function! ReadPyResults_buffer()
+	exe join(['new | setl bt=nofile | r !/usr/bin/env python ', expand('%:p')], '')
+endfunction
+nnoremap <Leader>r :silent execute ReadPyResults_buffer()<CR>
+
+
