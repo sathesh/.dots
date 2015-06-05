@@ -1,7 +1,12 @@
 Install 
+	git
 	ctags
 	tmux
 	pip
 	pep8
 	
+
+Other tools if it is remote machine
+	Mosh
+
 

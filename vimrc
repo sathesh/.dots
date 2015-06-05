@@ -54,9 +54,8 @@ set ruler                 "See status line
 set showcmd
 set showmatch             "show matching brackets
 set nostartofline         " leave my cursor where it was
-"syntax enable             
-"syntax on             
-"filetype on             
+syntax enable             
+syntax on             
 
 "## tabs, space
 "set ts=2                  "tabstop
@@ -137,3 +136,6 @@ nnoremap <Leader>n <C-w>=
 "## Pep8
 let g:pep8_map='<Leader>8'
 let g:pep8_ignore="E265"
+
+"## Python indentation
+au FileType python setl sw=4 sts=4 et
