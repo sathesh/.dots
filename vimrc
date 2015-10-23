@@ -33,6 +33,7 @@ let taglist_enabled=1
 " Pep8 plugin - python style checker. You need to have pep8 installed. 
 " pip install pep8 - to install
 Plugin 'pep8'
+Plugin 'kevinw/pyflakes-vim'
 
 " Solarized color scheme - I am not fan of this yet 
 " Plugin 'altercation/vim-colors-solarized.git'
@@ -85,11 +86,11 @@ set ignorecase
 
 
 ""## status bar
-hi statusline   term=NONE cterm=NONE ctermfg=black ctermbg=grey
-hi statuslineNC term=NONE cterm=NONE ctermfg=white  ctermbg=grey
+hi statusline   term=NONE cterm=NONE ctermfg=black ctermbg=Brown
+hi statuslineNC term=NONE cterm=NONE ctermfg=black  ctermbg=grey
 
 set laststatus=2
-hi User1 guibg=red ctermbg=red
+"#hi User1 guibg=red ctermbg=red
 
 "## for display function name in statusline 
 "## This requires TagList plugin
@@ -119,12 +120,21 @@ nnoremap <Leader>t :e#<CR>
 nnoremap <Leader>q :wq<CR>
 "Quit vi
 nnoremap <Leader>x :q<CR>
+"Quit vi - all files
+nnoremap <Leader>a :qa<CR>
+"select the window on multiple splits
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
+nnoremap <Leader>l <C-w>l
+nnoremap <Leader>h <C-w>h
 "########
 
 
 "## Open multiple files in horizontal split
-if argc() > 1
-  silent all
+if &diff
+   
+elseif argc() > 1
+   silent all
 endif
 "##
 
@@ -137,7 +147,7 @@ nnoremap <Leader>n <C-w>=
 
 
 
-"## Pep8
+"## Pep8 
 let g:pep8_map='<Leader>8'
 let g:pep8_ignore="E265"
 
@@ -153,3 +163,11 @@ endfunction
 nnoremap <Leader>r :silent execute ReadPyResults_buffer()<CR>
 
 
+"## Buffergator.NerdTree shortcuts
+map <Leader>f :NERDTreeToggle<CR>
+map <Leader>d :BuffergatorToggle<CR>
+
+
+
+"## 7.4 backspace issue 
+set backspace=2

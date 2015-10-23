@@ -21,6 +21,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias vi='vim'
 alias tmux='tmux -f $MYDOTS/.dots/tmux.conf'
+alias hiu='history -n'		# get latest history cmds from other terminals too
 
 
 
@@ -31,8 +32,8 @@ export autologout=0              # disable autologout
 export ignoreeof=1               # disable ^D for logout (up to 4)
 export FIGNORE=".o"              # don't complete .o files
 export HISTFILE=~/.bash_history  # history file
-export HISTFILESIZE=500          # history file size
-export HISTSIZE=1024             # save last 1024 commands
+export HISTFILESIZE=             # history file size - unlimited
+export HISTSIZE=                 # save last 1024 commands
 set -C                           # disable redirect overwrite
 set -b                           # enable immediate job notify
 
@@ -42,7 +43,8 @@ export PRINTER=lp				# Preferred printer.
 
 ## Bash history commands syncing with all terminals
 shopt -s histappend
-export PROMPT_COMMAND="history -a && history -n"
+#export PROMPT_COMMAND="history -a && history -n"
+export PROMPT_COMMAND="history -a"
 ##
 
 ## VI config
@@ -64,6 +66,7 @@ export INPUTRC=`echo $MYDOTS`'/.dots/inputrc'  #or any other location you want
 #SHOST=${HOST: -10}
 #PS1="$SHOST:\W\$"
 #PS1="$BLUE[$RED\`echo \$CLONE\`$BLUE]$NO_COLOUR\u@\h:\W\$ "
+#PS1="[\u@\h:\W]\$ "
 ###### 
 
 

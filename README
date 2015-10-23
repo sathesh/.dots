@@ -4,6 +4,7 @@ Install
 	tmux
 	pip
 	pep8
+	flake8
 	
 
 Other tools if it is remote machine
