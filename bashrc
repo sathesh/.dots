@@ -6,6 +6,9 @@ export USER_PATH=".:$MYDOTS/.dots/mybin" # Extra paths. I add my scripts over he
 export PATH=$USER_PATH:$PATH:
 export LD_LIBRARY_PATH=/usr/local/lib
 
+if [ -e $MYDOTS/.dots/alias ]; then
+	source $MYDOTS/.dots/alias
+fi
 if [ -e $MYDOTS/.dots/shortcuts ]; then
 	source $MYDOTS/.dots/shortcuts
 fi
