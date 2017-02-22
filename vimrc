@@ -29,6 +29,8 @@ Plugin 'taglist.vim'
 " This variable is set to enable statusline display with tag name 
 let taglist_enabled=1
 
+" cscope maps [ctrl + \] + s, l ,d
+Plugin 'steffanc/cscopemaps.vim'
 
 " Pep8 plugin - python style checker. You need to have pep8 installed. 
 " pip install pep8 - to install
@@ -153,6 +155,8 @@ let g:pep8_ignore="E265"
 
 "## Python indentation & hl column 80
 au FileType python setl sw=4 sts=4 et
+au FileType c setl sw=4 ts=4 sts=4 et
+au FileType cpp setl sw=4 ts=4 sts=4 et
 "au FileType python hi ColorColumn ctermbg=LightGray
 "au FileType python set colorcolumn=80
 
